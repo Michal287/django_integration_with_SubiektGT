@@ -1,0 +1,15 @@
+{% extends 'management.html' %}
+{% load static %}
+
+{% block display-menu %}
+    <div class="main-background-info">
+        <div class="reclamation-right-corner">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" id="add_reclamation">Dodaj reklamację</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,483 @@
+{% load static %}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+@font-face {
+  font-family: MainMenuFont;
+  src: url('../fonts/Aaargh.ttf');
+}
+
+@font-face {
+  font-family: MainDisplayFont;
+  src: url(../fonts/Poppins-Medium.ttf);
+}
+
+.main-display {
+    float: left;
+    background-image: url(../img/index_bg.jpg);
+    height: 100%;
+    width: 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.menu-primary {
+    font-family: MainMenuFont;
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-color: black;
+}
+
+.menu-primary-menu nav{
+    padding-top: 80%;
+}
+
+.menu-primary-choice li {
+    color: rgba(255, 255, 255, 0.8);
+    list-style: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+    text-transform: capitalize;
+    padding: 18px 20px;
+    line-height: 1 !important;
+    margin: 0 !important;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.menu-primary-choice li:active {
+    text-shadow: 0.001px 0.001px #FFFFFF;
+}
+
+.menu-primary-choice li:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.menu-primary-choice li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.menu-primary-choice li:first-child{
+    border-top: 1px dotted rgba(255, 255, 255, 0.2);
+
+}
+
+.menu-primary-choice {
+    padding: 15px 20px;
+}
+
+.main-overlay {
+    width: 100%;
+    height: 100%;
+    background:
+    url(../img/index_pattern.png) repeat center center rgba(0, 0, 0, 0.25);
+}
+
+.main-display-log {
+    position: absolute;
+    left: 30%;
+    top: 34%;
+    font-family: "MainDisplayFont", serif;
+    padding: 10px 0 20px;
+    margin: 0;
+    font-weight: bold;
+    font-size: 28px;
+    padding-left: 10%;
+    display: table-cell;
+    text-align: center;
+    line-height: 0.9;
+    color: white;
+    font-weight: bold;
+}
+
+.main-display-log button{
+    border: 0 solid transparent;
+    border-radius: 0;
+    border-radius: 0;
+    font-weight: 600;
+    font-stretch: expanded;
+
+}
+
+.main-display-log .btn-log:hover{
+    opacity: 0.9;
+}
+
+.main-display-log .btn-sign:hover{
+    opacity: 0.9;
+}
+
+
+.main-display-log .btn-log{
+    background-color: #337ab7;
+    border-color: #337ab7;
+    font-size: 14px;
+    padding: 18px 60px;
+}
+
+.main-display-log .btn-log:active {
+    background-color: #295183;
+    border-color: #295183;
+}
+
+.main-display-log .btn-sign{
+    background-color: #c2d82e;
+    border-color: #c2d82e;
+    font-size: 14px;
+    padding: 18px 60px;
+}
+
+.main-display-log .btn-sign:active{
+    background-color: #9fb529;
+    border-color: #9fb529;
+
+}
+
+.menu-primary-menu-logo .menu-logo {
+    height: 200px;
+    width: 200px;
+}
+
+.menu-primary-menu-logo {
+    position: absolute;
+    top: 4%;
+    left: 23%;
+    height: 200px;
+    width: 269px;
+    color: white;
+
+
+}
+
+i {
+    color: rgba(255, 255, 255, 0.8);
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+i:hover {
+    color: rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0 4px #FFFFFF;
+   -moz-box-shadow: 0 4px #FFFFFF;
+    box-shadow: 0 4px #FFFFFF;
+}
+
+
+.menu-primary-social {
+    position: absolute;
+    padding-top: 360px;
+}
+
+.list-social {
+    list-style: none;
+}
+
+.list-social li{
+    float: left;
+    text-align: center;
+    font-size: 30px;
+}
+
+.list-social li:first-child{
+    padding-left: 10px;
+}
+
+.login-signup-form input{
+    padding: 17px 15px 12px 15px;
+    width: 300px;
+    border-radius: 4px;
+    background:rgba(0,0,0,0.5);
+    color: white;
+    font-size: 16px;
+    font-family: MainMenuFont;
+    font-weight: bold;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: 1px solid #b7b7b7;
+
+}
+
+
+
+.login-signup-form input:active,
+.login-signup-form input:focus{
+    outline: none;
+    background:rgba(0,0,0,0.5);
+}
+
+input:-webkit-autofill:focus{
+-webkit-box-shadow: 0 0 0px 1000px rgb(248, 244, 255) inset, 0 0 8px;
+}
+
+.login-div-form{
+    display: none;
+}
+
+.signup-div-form {
+    display: none;
+}
+
+.btn-log-conf {
+    background-color: #337ab7;
+    border-color: #337ab7;
+    font-size: 14px;
+    padding: 18px 60px;
+}
+
+.btn-log-conf:hover{
+    opacity: 0.9;
+}
+
+.btn-log-conf:active {
+    background-color: #295183;
+    border-color: #295183;
+}
+
+
+.btn-sign-conf {
+    background-color: #9fb529;
+    border-color: #9fb529;
+    font-size: 14px;
+    padding: 18px 60px;
+    float: bottom;
+
+}
+
+.p-btn-sign-conf {
+    margin-top: 60px;
+}
+
+.btn-sign-conf:hover{
+    opacity: 0.9;
+}
+
+.btn-sign-conf:active {
+    background-color: #9fb529;
+    border-color: #9fb529;
+}
+
+.signup-choice div{
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    margin-right: 0px;
+    float: left;
+    width: 180px;
+    /*border: 1px solid #b7b7b7;*/
+}
+
+.signup-choice {
+    position: relative;
+    left: 22.5%;
+}
+
+.signup-choice i{
+    font-size: 40px;
+}
+
+.signup-choice-checkbox:checked + label i{
+    color: rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0 4px #FFFFFF;
+    -moz-box-shadow: 0 4px #FFFFFF;
+    box-shadow: 0 4px #FFFFFF;
+}
+
+.signup-choice-checkbox {
+    visibility:hidden;
+}
+
+.sign-company-fields {
+    display: none;
+}
+
+.main-background-info{
+    border-radius: 40px 40px 40px 40px;
+    -moz-border-radius: 40px 40px 40px 40px;
+    -webkit-border-radius: 80px 80px 80px 80px;
+    border: 2.5px dotted rgba(0, 0, 0, 1);
+    color: red;
+    height: 89%;
+    width: 94%;
+    background:
+    url(../img/index_pattern.png) repeat center center rgba(0, 0, 0, 0.4);
+    margin: 3%;
+    margin-top: 3.5%;
+}
+
+.menu-managment-social{
+    margin-top: -29.5%;
+}
+
+loggedUser{
+    height: 500px;
+    width: 500px;
+    font-weight: 900;
+    padding: 200px;
+    bottom: 500px;
+    margin: 500px;
+    top:50px;
+    background-color: red;
+
+}
+
+.loggedUser:first-child {
+    font-size: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+    padding-top: 0px;
+    text-align: center;
+
+}
+
+
+
+.menu-logo-management {
+    padding-top: 15%;
+}
+
+.menu-management-choice {
+    margin-top: -54px;
+}
+
+nav {
+    padding: 0px;
+}
+
+.btnOptns {
+    float: right;
+}
+
+.options-block {
+    position: absolute;
+    background-color: #0b0b0b;
+    left: 100%;
+    height: 100%;
+    top: 0;
+    width: 90%;
+    display: none;
+    transition: all 3s ease-in;
+
+}
+
+.options {
+    margin-top: 100%;
+    width: 76%;
+
+}
+
+.options li{
+    font-size: 12px;
+    white-space: normal;
+}
+
+.branch-menu {
+    border-radius: 40px 40px 40px 40px;
+    -moz-border-radius: 40px 40px 40px 40px;
+    -webkit-border-radius: 80px 80px 80px 80px;
+    border: 2.5px dotted rgba(0, 0, 0, 1);
+    color: red;
+    height: 20%;
+    width: 97%;
+    background:
+    url(../img/index_pattern.png) repeat center center rgba(0, 0, 0, 0.01);
+    margin: 20px;
+}
+
+.branch-list {
+    border-radius: 40px 40px 40px 40px;
+    -moz-border-radius: 40px 40px 40px 40px;
+    -webkit-border-radius: 80px 80px 80px 80px;
+    border: 2.5px dotted rgba(0, 0, 0, 1);
+    height: 72%;
+    width: 97%;
+    background:
+    url(../img/index_pattern.png) repeat center center rgba(0, 0, 0, 0.01);
+    margin: 20px;
+}
+
+.branch-logo {
+    border-radius: 40px 40px 40px 40px;
+    -moz-border-radius: 40px 40px 40px 40px;
+    -webkit-border-radius: 80px 0px 160px 80px;
+    border: 2.5px dotted rgba(0, 0, 0, 1);
+    color: white;
+    font-family: MainMenuFont;
+    font-size: 30px;
+    font-weight: 900;
+    height: 99%;
+    margin-top: -1px;
+    margin-left: -1px;
+    width: 50%;
+    background:
+    url(../img/index_pattern.png) repeat center center rgba(0, 0, 0, 0.01);
+}
+
+.branch-logo div{
+    float: left;
+    padding: 60px;
+    padding-left: 45px;
+}
+
+.branch-add-btn{
+    margin-top: -126px;
+    margin-left: 90%;
+    right: 20%;
+    float: left;
+    border: 2.5px dotted rgba(0, 0, 0, 1);
+    color: white;
+    font-size: 30px;
+    background:
+    url(../img/index_pattern.png) repeat center center rgba(0, 0, 0, 0.01);
+
+}
+
+.branch-add-btn i:hover{
+    box-shadow: none;
+}
+
+.reclamation-right-corner{
+    border-radius: 40px 40px 40px 40px;
+    -moz-border-radius: 40px 40px 40px 40px;
+    -webkit-border-radius: 80px 80px 80px 80px;
+    right: 5%;
+    top: 10%;
+    position: absolute;
+    border: 2px dotted rgba(0, 0, 0, 1);
+    color: white;
+    font-size: 16px;
+    background:
+    url(../img/index_pattern.png) repeat center center rgba(0, 0, 0, 0.01);
+    width: 50%;
+    height: 50%;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

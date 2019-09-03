@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block menu %}
+<div class="menu-primary-menu">
+    <div class="loggedUser">
+        <i class="loggedUserName">
+            <a style="font-weight: 900">{{ user }}</a>
+        </i>
+        <i class="fa fa-angle-double-down loggedUserName" id="logout"></i>
+    </div>
+    <div class="menu-primary-menu-logo"><img class="menu-logo menu-logo-management" src="{% static 'img/menu_logo_text.png' %}"></div>
+    <nav>
+        <ul class="menu-primary-choice menu-management-choice">
+            <li>
+                <a href="{% url 'MainSideView' %}">Home</a>
+
+            </li>
+            <li>
+                <a id="reclamation">Reclamations<span class="btnOptns fa fa-angle-down"></span></a>
+                <div class="options-block reclamation-options-block">
+                    <ul class="options reclamation-options">
+                        {% for branch in branches %}
+                        <li><a href="http://127.0.0.1:8000/managment/branch/1">{{ branch.show_branch }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a id="dailyTask">Daily Task List<span class="btnOptns fa fa-angle-down"></span></a>
+                 <div class="options-block dailyTask-options-block">
+                    <ul class="options dailyTask-options">
+                        <li><a href="#">Menu Example 01</a></li>
+                        <li><a href="#">Menu Example 02</a></li>
+                    </ul>
+                 </div>
+            </li>
+            <li>
+                <a href="about" id="aboutUs">About Us </a>
+            </li>
+            <li>
+                <a href="contact" id="contact">Contact</a>
+            </li>
+        </ul>
+
+    <div class="menu-primary-social menu-managment-social">
+        <ul class="list-social">
+            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+    </div>
+    </nav>
+</div>
+{% endblock %}
+
+{% block display-menu %}
+
+{% endblock %}

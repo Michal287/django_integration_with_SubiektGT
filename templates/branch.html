@@ -1,0 +1,34 @@
+{% extends 'management.html' %}
+{% load static %}
+
+{% block display-menu %}
+    <div class="main-background-info">
+        <div class="branch-menu">
+            <div class="branch-logo">
+                <div>
+                    {{ branch.show_branch }}
+                </div>
+            </div>
+            <div class="branch-add-btn">
+                <a href="{{ branch.id }}/add"><i class="fa fa-plus" id="add_reclamation"></i></a>
+            </div>
+        </div>
+        <div class="branch-list">
+            {% for reclamation in reclamations %}
+                {{ reclamation.show }}
+                <label>
+                    <select>
+                {% for status in statuses %}
+                    {% if reclamation.status == status.0 %}
+                    <option selected>{{ status.1 }}</option>
+                    {% endif %}
+                    <option>{{ status.1 }}</option>
+                    {% endfor %}
+                    </select>
+                </label>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ComBusiness</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="{% static '/js/index.js' %}"></script>
+
+
+</head>
+<body>
+        <div class="menu-primary">
+
+            <header>
+            {% block menu %}
+                <div class="menu-primary-menu">
+
+                    <div class="menu-primary-menu-logo"><img class="menu-logo" src="{% static 'img/menu_logo_text.png' %}"></div>
+
+                    <nav>
+                        <ul class="menu-primary-choice">
+
+                            <li><a id="home">Home</a>
+                            </li>
+                            <li><a id="aboutUs">About Us </a>
+                            </li>
+                            <li><a id="contact">Contact</a></li>
+
+                        </ul>
+
+                        <div class="menu-primary-social">
+                            <ul class="list-social">
+                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            {% endblock %}
+            </header>
+        </div>
+
+        <div class="main-display">
+            {% block display-menu %}
+            <div class="main-overlay">
+                <div class="main-display-log">
+                    <h1>Company Messenger</h1>
+                    <div class="login-div-form">
+                        <form action="" class="login-signup-form" id="login">
+{#                            {% csrf_token %}#}
+                            <p><input type="text" placeholder="Email" name="email" id="email_idd"></p>
+                            <p><input type="password" placeholder="Password" name="password" id="password_idd"></p>
+    {#                        <p class="user_rememeber"><input type="hidden" name="passwor_remember" value="1" id="user_rememeber"> Remember me<br></p>#}
+                            {% if login_mess %}
+                                <p>{{ login_mess }}</p>
+                            {% endif %}
+                            <p><a class="btn-log-conf">Log in</a></p>
+                        </form>
+                    </div>
+                    <div class="signup-div-form">
+                        <form class="login-signup-form" id="register" method="post">
+                            {% csrf_token %}
+                            <div class="signup-choice">
+                                <div>
+                                    <input type="radio" id="choice_user" value="user" name="choice" class="signup-choice-checkbox" checked>
+                                    <label for="choice_user">
+                                        <i class="fa fa-user"></i>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="choice_company" value="company" name="choice" class="signup-choice-checkbox">
+                                    <label for="choice_company">
+                                        <i class="fa fa-sitemap"></i>
+                                    </label>
+                                </div>
+                            </div>
+                                <div class="sign-company-fields">
+                                    <p><input type="text" placeholder="Company name" name="company_name" id="company_name"></p>
+                                    <p><input type="text" placeholder="Email" name="company_email" id="company_email"></p>
+                                    <p><input style="width: 100px;" type="text" placeholder="Post code" name="post_code" id="post_code">
+                                    <input type="text" placeholder="City" name="city" id="city"></p>
+                                    <p><input type="text" placeholder="Street" name="street" id="street">
+                                        <input type="text" placeholder="Number" name="number" id="company_house_number" style="width: 100px;"></p>
+                                    <p><input type="text" placeholder="Company number" name="company_number" id="company_number"></p>
+                                    <p><input type="password" placeholder="Password" name="company_password" id="company_password"></p>
+                                </div>
+                                <div class="sign-user-fields">
+                                    <p><input type="text" placeholder="Login" name="login" id="login_user"></p>
+                                    <p><input type="text" placeholder="Name" name="name" id="name"></p>
+                                    <p><input type="text" placeholder="Surname" name="surname" id="surname"></p>
+                                    <p><input type="text" placeholder="Email" name="email" id="email"></p>
+                                    <p><input type="password" placeholder="Password" name="password" id="password"></p>
+                                </div>
+
+    {#                        <p class="user_rememeber"><input type="hidden" name="passwor_remember" value="1" id="user_rememeber"> Remember me<br></p>#}
+                            <p class="p-btn-sign-conf"><a class="btn-sign-conf">Sign up</a></p>
+                        </form>
+                    </div>
+                    <div class="main-display-log-btns">
+                        <a class="btn-log">Log in</a>
+                        <a class="btn-sign">Sing up</a>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+
+</body>
+</html>
