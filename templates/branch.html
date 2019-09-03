@@ -17,12 +17,13 @@
             {% for reclamation in reclamations %}
                 {{ reclamation.show }}
                 <label>
-                    <select>
+                    <select data-id="{{ reclamation.id }}">
                 {% for status in statuses %}
                     {% if reclamation.status == status.0 %}
-                    <option selected>{{ status.1 }}</option>
+                        <option value="{{ status.0 }}" selected>{{ status.1 }}</option>
+                    {% else %}
+                        <option value="{{ status.0 }}">{{ status.1 }}</option>
                     {% endif %}
-                    <option>{{ status.1 }}</option>
                     {% endfor %}
                     </select>
                 </label>

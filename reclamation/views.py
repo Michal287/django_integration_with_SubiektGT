@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.http import JsonResponse
 from rest_framework.views import APIView
-from .models import Employee, Company, Branch, Client, Product, Producer, Reclamation, status_list
-from .forms import ReclamationForm
+from .models import Employee, Company, Branch, Reclamation, status_list
+from .forms import ReclamationForm, ReclamationForm, BranchAddForm
 
 from django.http import HttpResponse
 from .utils import render_to_pdf
@@ -111,7 +111,9 @@ class ReclamationView(View):
         current_user = Company.objects.get(basic_info_id=User.objects.get(username=request.user).id)
         branches = Branch.objects.filter(company_id=current_user.id)
         branch = Branch.objects.get(id=id)
-        reclamations = Reclamation.objects.all()#Trzeba inaczej wyjmować company
+        reclamations = Reclamation.objects.filter(branch=id)
+        for i in reclamations:
+            print(i)
         return render(request, "branch.html", {"branches": branches, "branch": branch, "reclamations": reclamations, "statuses": status_list})
 
 
@@ -124,14 +126,24 @@ class ReclamationAddView(View):
 
 
         return render(request, "reclamation_add.html",
-                      {"branches": branches, "form": form})
+                      {"branches": branches, "form": form, "button": "Dodaj reklamację"})
 
     def post(self, request, id):
         form = ReclamationForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.save(commit=False)
+            new_reclamation = Reclamation.objects.latest("id")
+            branch = Branch.objects.latest("id")
+            branch.reclamation.add(new_reclamation)
+
+
 #Trzeba inaczej wyjmować company
-            print(form.cleaned_data)
+
+
+            bool_status = {
+                True: "Tak",
+                False: "Nie"
+            }
 
             date = datetime.date.today()
 
@@ -143,14 +155,14 @@ class ReclamationAddView(View):
                 "sybol": form.cleaned_data["symbol"],
                 "product": form.cleaned_data["product"],
                 "options": {'Niezgodność towaru z umową (opis wady)': form.cleaned_data["option_one"],
-                            'Wadę zauważono': form.cleaned_data["option_two"],
-                            'Data wydanania towaru': form.cleaned_data["option_three"],
+                            'Wadę zauważono': f'{form.cleaned_data["option_two"]}',
+                            'Data wydanania towaru': f'{form.cleaned_data["option_three"]}',
                             'Numer paragonu': form.cleaned_data["option_four"],
                             'Przyjęto do dypozytu': form.cleaned_data["option_five"],
-                            "Żądanie Nabywcy - nidopłata naprawa": form.cleaned_data["option_six"],
-                            'Żądanie Nabywcy - wymiana': form.cleaned_data["option_seven"],
-                            'Żądanie Nabywcy - obniżenie ceny(kwota obniżki)': form.cleaned_data["option_eight"],
-                            'Żądanie Nabywcy - zwrot pieniędzy': form.cleaned_data["option_nine"],
+                            "Żądanie Nabywcy - nidopłata naprawa": bool_status[form.cleaned_data["option_six"]],
+                            'Żądanie Nabywcy - wymiana': bool_status[form.cleaned_data["option_seven"]],
+                            'Żądanie Nabywcy - obniżenie ceny(kwota obniżki)': bool_status[form.cleaned_data["option_eight"]],
+                            'Żądanie Nabywcy - zwrot pieniędzy': bool_status[form.cleaned_data["option_nine"]],
             }
 
             }
@@ -158,5 +170,21 @@ class ReclamationAddView(View):
             return HttpResponse(pdf, content_type='application/pdf')
 
         return redirect(reverse("ReclamationView", args=(id,)))
+
+
+class BranchAddView(View):
+    def get(self, request):
+        form = BranchAddForm()
+        return render(request, "reclamation_add.html", context={"form": form, "button": "Dodaj sklep"})
+
+    def post(self, request):
+        form = BranchAddForm(request.POST)
+        if form.is_valid():
+            b = form.save(commit=False)
+            b.company_id = Company.objects.get(basic_info_id=User.objects.get(username=request.user)).id
+            b.save()
+
+        return HttpResponse("SIema")
+
 
 

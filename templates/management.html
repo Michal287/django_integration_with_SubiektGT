@@ -21,8 +21,9 @@
                 <div class="options-block reclamation-options-block">
                     <ul class="options reclamation-options">
                         {% for branch in branches %}
-                        <li><a href="http://127.0.0.1:8000/managment/branch/1">{{ branch.show_branch }}</a></li>
+                            <li><a href="branch/{{ branch.id }}">{{ branch.show_branch }}</a></li>
                         {% endfor %}
+                        <li><a href="add"><i class="reclamation-options-add fa fa-plus"></i></a></li>
                     </ul>
                 </div>
             </li>

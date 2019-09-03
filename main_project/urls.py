@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.conf.urls import url
 from reclamation.views import MainSideView, AboutAsView, ContactView, ManagmentView, LoginView, LogoutView, RegisterView, ReclamationView,\
-    ReclamationAddView
+    ReclamationAddView, BranchAddView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +25,7 @@ urlpatterns = [
     path('about/', AboutAsView.as_view(), name="AboutAsView"),
     path('contact/', ContactView.as_view(), name="ContactView"),
     path('managment/', ManagmentView.as_view(), name="ManagmentView"),
+    path('managment/add', BranchAddView.as_view(), name="BranchAddView"),
     path('login/', LoginView.as_view(), name="LoginView"),
     path('logout/', LogoutView.as_view(), name="LogoutView"),
     path('register/', RegisterView.as_view(), name="RegisterView"),

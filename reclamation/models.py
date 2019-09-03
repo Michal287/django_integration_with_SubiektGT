@@ -15,19 +15,6 @@ class Company(models.Model):
     company_number = models.IntegerField(unique=True, default=0)  # NIP
 
 
-class Branch(models.Model):
-    city = models.CharField(max_length=64)
-    street = models.CharField(max_length=64)
-    number = models.CharField(max_length=16)
-    post_code = models.CharField(max_length=6)
-    phone_number = models.IntegerField(unique=True)
-    employee = models.ManyToManyField(Employee)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
-
-    def show_branch(self):
-        return f"{self.city}, {self.street}, {self.number}"
-
-
 class Client(models.Model):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
@@ -84,4 +71,18 @@ class Reclamation(models.Model):
 
     def show(self):
         return f"{self.client.first_name} {self.client.last_name}, {self.product}"
+
+
+class Branch(models.Model):
+    city = models.CharField(max_length=64)
+    street = models.CharField(max_length=64)
+    number = models.CharField(max_length=16)
+    post_code = models.CharField(max_length=6)
+    phone_number = models.IntegerField(unique=True)
+    employee = models.ManyToManyField(Employee)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    reclamation = models.ManyToManyField(Reclamation, null=True)
+
+    def show_branch(self):
+        return f"{self.city}, {self.street}, {self.number}"
 

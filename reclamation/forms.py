@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.admin.widgets import AdminDateWidget
 from django.forms.fields import DateField
-from .models import Reclamation
+from .models import Reclamation, Branch
 
 
 class DateInput(forms.DateInput):
@@ -33,3 +33,9 @@ class ReclamationForm(forms.ModelForm):
             'option_two': DateInput(),
             'option_three': DateInput(),
         }
+
+
+class BranchAddForm(forms.ModelForm):
+    class Meta:
+        model = Branch
+        exclude = ("company", "employee","reclamation",)
